@@ -3,27 +3,18 @@
 The following challenge shouldn't take more than a few hours to complete for someone brave enough and worthy to embark on 
 this mission to developing the greatest Community Driven Recruitment platform.
 
-We have setup almostg everything for you to resemble our current stack
-- Prisma
+Make sure you read the entire README before starting the challenge.
+
+We have set up almost everything for you to resemble our current stack:
+
+- Prisma (with local SQLite) and the schema you will need for this exercise
 - React Query
 - Material UI
 - Styled Components
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## 🎬 Getting Started
-
-First clone this project on your local machine
-```
-git clone git@github.com/welfound-challenge.git
-```
-
-Second, run the development server:
-
-```bash
-yarn dev
-```
-
-### ❓ The Questions
+### ❓ 1. The Questions
 To make sure you have pretty good understanding of React and some parts of the toolchain we would like you to answer
 the following questions. Please provide your answer in the "arrays" 🤓 
 
@@ -53,7 +44,7 @@ a[4] = `
 
 `;
 
-q[5] = `How would you make sure that you don't over-fetching data from the server?`;
+q[5] = `How would you make sure that you don't over-fetch data from the server?`;
 a[5] = `
 
 `;
@@ -78,7 +69,7 @@ a[9] = `
 
 `;
 
-q[10] = 'Why are the advantages of NextJS?';
+q[10] = 'What are the advantages of NextJS?';
 a[10] = `
 
 `;
@@ -110,33 +101,79 @@ a[14] = `
 Just to make sure that you are the right person to embark on our mission we'll make the test a bit (but not very)
 challenging
 
-Please make sure to create a branch out of `main` and push your work under that branch. You can name it however you want.
-After you are finished with everything you can either create a single PR with all your work or multiple PRs. 
-Totally up to you.
-
 The only set-in-stone requirement is that you have to use TypeScript.
 
+## 🎬 Getting Started
 
-🧱 Then you will have to develop a small feature:
- 
+First clone this project on your local machine and install the dependencies
+```
+git clone git@github.com:Welfound/welfound-challenge.git
+cd welfound-challenge
+yarn
+```
+
+
+
+Second, run the development server:
+
+```bash
+yarn dev
+```
+
+Once you are finished, you have to push your work onto your own **private** GitHub repository.
+
+You will have to add `ovidb` be as a contributor to the repo so that we can look at your work.
+
+We like small and often commits, but it is up to you how you commit. 
+The end result is what matters the most 
+
+
+### 🧱 The "feature"
+
+#### Some "DevOps"
+- [ ] Seed the SQLite database with some data. 
+
+    - In the `/prisma` folder you have `_seed.ts` file. We've already prepared it for you, but you'll need to insert the actual data.
+    - The seeder needs to be run via the `seed.sh` bash script
+    - We'll let you figure out if cleaning the database is needed before seeding.
+    
+#### On the "server" 
 - [ ] Create a shortlist endpoint under `/api/v1/shortlist`
-- [ ] Fetch the shortlist data from the database using the prisma client  
-- [ ] Fetch the data from the mock endpoint using ReactQuery
+- [ ] In the newly created endpoint fetch the shortlist data from the database using the prisma client
+  
+    - Make sure you import the client from `prisma/client`. Something along these lines
+  
+    ```typescript
+    import client from 'prisma/client';
+    import { NextApiRequest, NextApiResponse } from 'next';
+    
+    export default async (req: NextApiRequest, res: NextApiResponse) => {
+      const shortlist = await client.shortlist.findMany(...);
+      ...
+    }
+    
+    ```
+
+
+#### On the client  
 - [ ] Create a **Shortlist Page** under the `/shortlist` route according to the "[design](docs/features/shortlist/shortlist.png)"
+- [ ] Fetch the data from the above created endpoint using ReactQuery
+    - You can use axios if you want together with ReactQuery.
   
 ```    
  ℹ️ Don't worry we don't usually work out of PNG files 😄 We use Figma for our design files. 
     Design is really important to us but we care a lot more about solving the underling issues 
     in recruitment the industry. We will not be judging or expecting pixel perfect designs (yet😛)
-    Oh and you might find `mui-datatables` handy to build the table 😉
+    Oh and you might find [mui-datatables](https://github.com/gregnb/mui-datatables) handy to build the table 😉
 ```
 
-⭐️ Bonus point and golden stars if you decide to do any (or all if you feel brave) the following optional tasks
+#### ⭐️ Bonus point and golden stars 
+If you decide to do any (or all if you feel brave) the following optional tasks, you will for sure raise your chances but
+we do understand time is a luxury item, so, it's definitely not a requirement!
  
 - [ ] Create a custom error page.
 - [ ] Create another route for fetching a single user (no need for the UI)
-- [ ] Create a unit tests (it doesn't matter what library you're using are what are you testing)
-
+- [ ] Create a unit tests (it doesn't matter what library you're, but we do like [react-testing-library](https://testing-library.com/docs/react-testing-library/intro/))
 
 
 
