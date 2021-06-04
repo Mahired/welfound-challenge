@@ -131,16 +131,30 @@ The end result is what matters the most
 
 ### 🧱 The "feature"
 
-- [ ] Create a **Jobs Card** according to the "[design](docs/features/shortlist/card.png)"
-- [ ] Create a **Jobs Page** under the `/jobs` route
-- [ ] Fetch the data from the already created `/api/jobs` endpoint using ReactQuery
-  - You can use axios if you want together with ReactQuery.
+```
+ ℹ️ Don't worry we don't usually work out of PNG files 😄
+ We use Figma for our design files.
 
+ Design is really important to us but we care a lot more about
+ solving the underling issues in recruitment the industry.
+
+ We will not be judging or expecting pixel perfect designs (yet😛)
 ```
- ℹ️ Don't worry we don't usually work out of PNG files 😄 We use Figma for our design files.
-    Design is really important to us but we care a lot more about solving the underling issues
-    in recruitment the industry. We will not be judging or expecting pixel perfect designs (yet😛)
-```
+
+- [ ] Create a **Jobs Card** according to the "[design](docs/features/shortlist/card.png)".
+
+  - Make sure to use Material-UI and StyledComponents to create the card.
+
+- [ ] Create a **Jobs Page** under the `/jobs` route
+- [ ] On the **Jobs Page**, display the two existing jobs as a list using the card.
+
+  - Fetch the data from the already created `/api/jobs` endpoint using ReactQuery.
+
+  - Use axios if you want together with ReactQuery.
+
+  - Bonus points if you figure out how to use `initialData` received from `getServerSideProps`
+
+  ℹ️ In case you have no data in the response make sure to run `yarn seed`.
 
 #### ⭐️ Bonus point and golden stars
 
