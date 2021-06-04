@@ -17,3 +17,38 @@ model Shortlist {
   referral    String
   progress    String
 }
+
+model Salary {
+  id        Int   @id @default(autoincrement())
+  lowRange  Int
+  highRange Int
+  job       Job[]
+}
+
+model Tag {
+  id    Int    @id @default(autoincrement())
+  name  String
+  Job   Job?   @relation(fields: [jobId], references: [id])
+  jobId Int?
+}
+
+model Company {
+  id   Int    @id @default(autoincrement())
+  name String
+  Job  Job[]
+}
+
+model Job {
+  id            Int      @id @default(autoincrement())
+  createdAt     DateTime @default(now())
+  title         String
+  description   String
+  salary        Salary   @relation(fields: [salaryId], references: [id])
+  salaryId      Int
+  contractType  String
+  referralBonus Int?
+  tag           Tag[]
+  company       Company  @relation(fields: [companyId], references: [id])
+  location      String
+  companyId     Int
+}
